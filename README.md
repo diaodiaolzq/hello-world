@@ -1,3 +1,4 @@
-# hello-world
-# Institute of Acoustics, Chinese Academy of Sciences
-It's my first proj.
+
+# C based data structures and algorthms learning
+
+Standing on the shoulder of giants.
