@@ -139,7 +139,7 @@ int linkListCreatRing(linkList *L, int k) {
     return 1;
 }
 
-int linkListRingExist(linkList *L) {
+int linkListRingExist(linkList *L, int *crossoverNode) {
     linkList *fast, *slow;
     int j, k;
     fast = L->next;
@@ -160,6 +160,30 @@ int linkListRingExist(linkList *L) {
         return 0;
     }
 
+    // find the crossover node
+    fast = L->next;
+    slow = slow->next;
+    k = 1;
+    while(fast != slow) {
+        fast = fast->next;
+        slow = slow->next;
+        k++;
+    }
+    *crossoverNode = k;
+
+    return 1;
+}
+
+int clearLinkList(linkList *L) {
+    // can not clear ring
+    linkList *p, *q;
+    p = L->next;
+    while (p != NULL) {
+        q = p;
+        p = p->next;
+        free(q);
+    }
+    L->next = NULL;
     return 1;
 }
 
@@ -184,12 +208,16 @@ void main() {
     // success = readLinkListElement(head, 5, &elementVal);
     // printf("success = %d, %d\n", success, elementVal);
 
-    success = linkListCreatRing(head, 4);
-    printf("success = %d\n", success);
-    // printLinkListElement(head);
+    success = linkListCreatRing(head, 5);
+    // printf("success = %d\n", success);
+    // // printLinkListElement(head);
 
-    success = linkListRingExist(head);
-    printf("success = %d\n", success);
+    // int crossoverNode;
+    // success = linkListRingExist(head, &crossoverNode);
+    // printf("success = %d, crossover node = %d\n", success, crossoverNode);
+
+    success = clearLinkList(head);
+    printf("success = %d, head->next = %p\n", success, head->next);
 
     return;
 }
