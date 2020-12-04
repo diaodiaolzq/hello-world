@@ -21,10 +21,10 @@ if [[ -d "${workSpaceDir}/C/build.out/${fileNameBase}.dSYM" ]]; then
     rm -r "${workSpaceDir}/C/build.out/${fileNameBase}.dSYM"
 fi
 
-if [[ -f "${workSpaceDir}/C/${fileNameBase}"]]; then
+if [[ -f "${workSpaceDir}/C/${fileNameBase}" ]]; then
     mv -f "${workSpaceDir}/C/${fileNameBase}" "${workSpaceDir}/C/build.out/"
 fi
 
-if [[ -d "${workSpaceDir}/C/${fileNameBase}.dSYM"]]; then
+if [[ -d "${workSpaceDir}/C/${fileNameBase}.dSYM" ]]; then
     mv "${workSpaceDir}/C/${fileNameBase}.dSYM" "${workSpaceDir}/C/build.out/"
 fi
