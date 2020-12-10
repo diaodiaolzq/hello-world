@@ -1,3 +1,4 @@
+
 {
     "version": "0.2.0",
     "configurations": [
@@ -20,6 +21,26 @@
                 }
             ],
             "preLaunchTask": "build_mv"
+        },
+        {
+            "name": "valgrind_launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/build.out/${fileBasenameNoExtension}",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "valgrind C/C++"
         }
     ]
 }
