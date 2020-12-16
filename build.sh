@@ -2,7 +2,7 @@
 
 function Usage
 {
-    echo "Usage: ./build.sh fileNameBase workSpaceDir"
+    echo "Usage: ./build.sh fileDirname fileNameBase"
 }
 
 if [[ $# -lt 1 ]]; then
@@ -10,21 +10,21 @@ if [[ $# -lt 1 ]]; then
     exit 1
 fi
 
-fileNameBase=$1;
-workSpaceDir=$2;
+fileDirname=$1;
+fileNameBase=$2;
 
-if [[ ! -d "${workSpaceDir}/C/build.out" ]]; then
-    mkdir "${workSpaceDir}/C/build.out"
+if [[ ! -d "${fileDirname}/build.out" ]]; then
+    mkdir "${fileDirname}/build.out"
 fi
 
-if [[ -d "${workSpaceDir}/C/build.out/${fileNameBase}.dSYM" ]]; then
-    rm -r "${workSpaceDir}/C/build.out/${fileNameBase}.dSYM"
+if [[ -d "${fileDirname}/build.out/${fileNameBase}.dSYM" ]]; then
+    rm -r "${fileDirname}/build.out/${fileNameBase}.dSYM"
 fi
 
-if [[ -f "${workSpaceDir}/C/${fileNameBase}" ]]; then
-    mv -f "${workSpaceDir}/C/${fileNameBase}" "${workSpaceDir}/C/build.out/"
+if [[ -f "${fileDirname}/${fileNameBase}" ]]; then
+    mv -f "${fileDirname}/${fileNameBase}" "${fileDirname}/build.out/"
 fi
 
-if [[ -d "${workSpaceDir}/C/${fileNameBase}.dSYM" ]]; then
-    mv "${workSpaceDir}/C/${fileNameBase}.dSYM" "${workSpaceDir}/C/build.out/"
+if [[ -d "${fileDirname}/${fileNameBase}.dSYM" ]]; then
+    mv "${fileDirname}/${fileNameBase}.dSYM" "${fileDirname}/build.out/"
 fi
